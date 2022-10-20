@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include 'partials/menu.html' %}
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<div class="container">
+    <center>
+        <h4>Editar Auto</h4>
+    </center>
+    <hr>
+    <form action="{% url'trilha_edit' trilha %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar</button>
+        <button>
+            <a href="{% url 'modificacao' %}">Cancelar</a>
+        </button>
+    </form>
+
+</div>
+
+
+
+
+
+
+{% include 'partials/footer.html' %} {% endblock content %}

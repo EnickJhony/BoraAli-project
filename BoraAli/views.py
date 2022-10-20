@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from .models import Trilha
-# from .forms import AutoForm
+from .forms import TrilhaForm
 
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
@@ -50,7 +50,13 @@ def trilha_add(request):
 
         trilha.save()
         # messages.info(request, 'Trilha cadastrada com sucesso')
-        return redirect('index')
+        return redirect('modificacao')
+
+def trilha_del(request, trilha_id):
+    trilha = get_object_or_404(Trilha, pk=trilha_id)
+    trilha.delete()
+    return redirect('modificacao')
+
 
 
 def login(request):
@@ -65,12 +71,36 @@ def login(request):
             login_django(request, user)
             return render(request, 'index.html')
         else:
-            # messages.info(request, 'Usuário invalido')
             return redirect('login')
-
-    # return render(request, 'login.html')
 
 
 def logout(request):
     logout_django(request)
     return render(request, 'index.html')
+
+
+def modificacao(request):
+    trilhas = Trilha.objects.all()
+
+    dados = {
+        'trilhas': trilhas
+    }
+    return render(request, 'modificacao.html', dados)
+
+
+def trilha_edit(request,trilha_id):
+    trilha = get_object_or_404(Trilha,pk=trilha_id)
+
+    form = TrilhaForm(request.POST or None, instance=trilha)
+
+    if request.POST:
+        if form.is_valid():
+            form.save()
+            return redirect('modificacao')
+    
+    context = {
+        'trilha' : trilha.id,
+        'form' : form,
+    }
+
+    return render (request, 'modificacao', context)

@@ -2,31 +2,35 @@
 {% block content %}
 {% include 'partials/menu.html' %}
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-<h3>Adicionar Trilhas</h3>
-
-<form action="{% url 'trilha_add' %}" method="POST">
-  {% csrf_token %}
-  <span>Nome: </span>
-  <input type="text" name="nome_trilha" />
-  <br />
-  <span>Descrição: </span>
-  <input type="text" name="descricao" />
-  <br />
-  <span>Localização: </span>
-  <input type="text" name="localizacao" />
-  <br />
-  <span>Duraçao: </span>
-  <input type="number" name="duracao" />
-  <br />
-  <span>Nível de dificuldade: </span>
-  <input type="text" name="nivel" />
-  <br />
-  <span>Curiosidades: </span>
-  <input type="text" name="curiosidades"/>
-  <br/>
-  <button type="submit">Salvar</button>
-  <button><a href="{% url 'index' %}">Cancelar</a></button>
-</form>
+<div class="container">
+  <center>
+    <h3>Adicionar Trilhas</h3>
+  </center>  
+  <br><br><br>
+  <form action="{% url 'trilha_add' %}" method="POST">
+    {% csrf_token %}
+    <span>Nome: </span>
+    <input type="text" name="nome_trilha" />
+    <br />
+    <span>Descrição: </span>
+    <input type="text" name="descricao" />
+    <br />
+    <span>Localização: </span>
+    <input type="text" name="localizacao" />
+    <br />
+    <span>Duraçao: </span>
+    <input type="number" name="duracao" />
+    <br />
+    <span>Nível de dificuldade: </span>
+    <input type="text" name="nivel" />
+    <br />
+    <span>Curiosidades: </span>
+    <input type="text" name="curiosidades"/>
+    <br/>
+    <button type="submit">Salvar</button>
+    <button><a href="{% url 'index' %}">Cancelar</a></button>
+  </form>
+</div>
 
 {% include 'partials/footer.html' %}
 {% endblock content %}

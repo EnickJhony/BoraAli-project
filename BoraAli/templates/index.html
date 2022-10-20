@@ -2,13 +2,11 @@
 <main>
   {% include 'partials/menu.html' %}
   <section class="section" id="home">
-    {% if messages %}
-      {% for m in messages %}
-        <div class="alert">
-          {{ m }}
-        </div>
-      {% endfor %}
-    {% endif %}
+    {% if messages %} {% for m in messages %}
+    <div class="alert">{{ m }}</div>
+    {% endfor %} {% endif %}
+    {% if user.is_authenticated %}
+    {% else %}
     <div class="container home grid">
       <div class="home__data">
         <h1 class="home__title">Bora Ali?</h1>
@@ -23,9 +21,17 @@
         class="home__img"
       />
     </div>
+    {% endif %}
   </section>
   <section class="section container cards">
-    <h2 class="cards__title">Trilhas</h2>
+    <center>
+      <h2 class="cards__title">Trilhas</h2>
+    </center>
+    {% if user.is_authenticated %}
+    <a href="{% url 'modificacao' %}">
+      Clique aqui para acessar a tela de moficação de trilhas</a
+    >
+    {% else %} {% endif %}
     <div class="card">
       {% if trilhas %} {% for trilha in trilhas %}
       <div class="card__content">
@@ -33,21 +39,8 @@
           <i class="uil uil-compass card__logo"></i>
           <h3 class="card__title">Nome: {{ trilha.nome_trilha }}</h3>
         </a>
-        {% comment %}
-        <p class="card__description">
-          Descrição: Essa trilha é parara parara parara
-        </p>
-        <p class="card__location">Localização: ali onde judas lost the boots</p>
-        <p class="card__duration">Duração: 1h</p>
-        <p class="card__dificult-level">Nível: Avançado</p>
-        <p class="card__curiosity">
-          Curiosidades do bagulho: foi visto o curupira
-        </p>
-        {% endcomment %}
       </div>
-      {% endfor %} {% else %}
-      <p>Não há trilhas cadastradas</p>
-      {% endif %}
+      {% endfor %} {% else %} {% endif %}
     </div>
   </section>
 </main>

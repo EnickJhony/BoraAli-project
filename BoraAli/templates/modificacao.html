@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% block content %} {% include 'partials/menu.html' %}
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<div class="container">
+  <center>
+    <h3>Todas as trilhas</h3><br><br>
+  </center>
+  <form action="">
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Desricao</th>
+          <th>localizacao</th>
+          <th>duracao</th>
+          <th>nivel</th>
+          <th>curiosidade</th>
+          <th>data_criacao</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for trilha in trilhas %}
+        <tr>
+          <td>{{ trilha.nome_trilha }}</td>
+          <td>{{ trilha.descricao }}</td>
+          <td>{{ trilha.localizacao }}</td>
+          <td>{{ trilha.duracao }}</td>
+          <td>{{ trilha.nivel }}</td>
+          <td>{{ trilha.curiosidade }}</td>
+          <td>{{ trilha.data_criacao }}</td>
+          <td>
+            <button>
+              <a href="{% url 'trilha_edit' trilha.id %}">Editar</a>
+            </button>
+            <button>
+              <a href="{% url 'trilha_del' trilha.id %}" onclick="return confirm('confirma a exlusao')"
+                >Excluir</a
+              >
+            </button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br><br>
+    <center>
+        <button>
+            <a href="{% url 'trilha_add' %}">cadastrar</a>
+        </button>
+    </center>
+  </form>
+</div>
+
+{% include 'partials/footer.html' %} {% endblock content %}

@@ -17,13 +17,16 @@
           <a href="{% url 'logout' %}">Sair</a>
         </button>
       </p>
+      <!-- <a href="{% url 'modificacao' %}">
+        <p>Modificar</p>
+      </a> -->
       {% else %}
       <li class="navigation__item button">
         <a href="{% url 'login' %}">Login</a>
       </li>
-      <li class="navigation__item button">
+      <!-- <li class="navigation__item button">
         <a href="#">Cadastro</a>
-      </li>
+      </li> -->
       {% endif %}
     </ul>
   </nav>

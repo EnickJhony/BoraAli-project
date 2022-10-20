@@ -2,7 +2,7 @@
 {% block content %}
 {% include 'partials/menu.html' %}
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-<form action="{% url 'login' %}" method="POST">{% csrf_token %}
+<form action="{% url 'login' %}" method="POST" class="container">{% csrf_token %}
     <span>Nome</span>
     <input type="text" name="usuario">
     <br>
