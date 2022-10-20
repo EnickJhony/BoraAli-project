@@ -1,8 +1,15 @@
-from email import message
-from email.message import Message
-from pyexpat.errors import messages
 from django.shortcuts import get_object_or_404, redirect, render
 from .models import Trilha
+# from .forms import AutoForm
+
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
+from django.contrib.auth import login as login_django
+from django.contrib.auth import logout as logout_django
+
+# from email import message
+# from email.message import Message
+# from pyexpat.errors import messages
 
 # Create your views here.
 
@@ -38,8 +45,32 @@ def trilha_add(request):
         nivel = request.POST.get('nivel')
         curiosidades = request.POST.get('curiosidades')
 
-        trilha = Trilha(nome_trilha=nome_trilha, descricao=descricao, localizacao=localizacao,duracao=duracao, nivel=nivel, curiosidades=curiosidades)
+        trilha = Trilha(nome_trilha=nome_trilha, descricao=descricao, localizacao=localizacao,
+                        duracao=duracao, nivel=nivel, curiosidades=curiosidades)
 
         trilha.save()
         # messages.info(request, 'Trilha cadastrada com sucesso')
         return redirect('index')
+
+
+def login(request):
+    if request.method == "GET":
+        return render(request, 'login.html')
+    else:
+        username = request.POST.get('usuario')
+        senha = request.POST.get('senha')
+
+        user = authenticate(username=username, password=senha)
+        if user:
+            login_django(request, user)
+            return render(request, 'index.html')
+        else:
+            # messages.info(request, 'Usuário invalido')
+            return redirect('login')
+
+    # return render(request, 'login.html')
+
+
+def logout(request):
+    logout_django(request)
+    return render(request, 'index.html')

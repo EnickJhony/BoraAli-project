@@ -10,9 +10,16 @@
     </a>
 
     <ul class="navigation__list">
-      {% if user.is_authenticated %} Olá, {{ user.get_username }} {% else %}
+      {% if user.is_authenticated %}
+      <p>
+        Olá, {{ user.get_username }}
+        <button>
+          <a href="{% url 'logout' %}">Sair</a>
+        </button>
+      </p>
+      {% else %}
       <li class="navigation__item button">
-        <a href="#">Login</a>
+        <a href="{% url 'login' %}">Login</a>
       </li>
       <li class="navigation__item button">
         <a href="#">Cadastro</a>
