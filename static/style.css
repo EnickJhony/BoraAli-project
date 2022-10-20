@@ -1,153 +1,153 @@
 /* Google Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Red+Hat+Display:wght@400;700;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Red+Hat+Display:wght@400;700;900&display=swap');
 
-:root{
-    --first-color: #00bfff;
-    --body-font: 'Red Hat Display', sans-serif;
+:root {
+  --first-color: #00bfff;
+  --body-font: 'Red Hat Display', sans-serif;
 }
 
 /* Base CSS and Reset CSS*/
 * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 body,
-button{
-    font-family: var(--body-font);
+button {
+  font-family: var(--body-font);
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 a {
-    text-decoration: none;
-    color: #000;
+  text-decoration: none;
+  color: #000;
 }
 
 img {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 /* Reusable Css */
 .container {
-    max-width: 1124px;
-    margin-right: auto;
-    margin-left: auto;  
+  max-width: 1124px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
-.section{
-    padding: 7.1rem 0 0;
+.section {
+  padding: 7.1rem 0 0;
 }
 
-.grid{
-    display: grid;
+.grid {
+  display: grid;
 }
 
-.button{
-    display: inline-block;
-    background-color: var(--first-color);
-    padding: 18px 32px;
-    border: 2px solid var(--first-color-light);
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: background .3s;
+.button {
+  display: inline-block;
+  background-color: var(--first-color);
+  padding: 18px 32px;
+  border: 2px solid var(--first-color-light);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background 0.3s;
 }
-  
-.button:hover{
-    background-color: var(--first-color-alt);
+
+.button:hover {
+  background-color: var(--first-color-alt);
 }
 
 /* Header and Navigation*/
-.header{
-    width: 100%;
-    background-color: transparent;
-    position: fixed;
-    top: 0;
-    left: 0;
-    transition: background .3s;
-    background-color: #fff;
-    box-shadow: 0 4px 8px hsla(180, 12%, 4%, .3);
+.header {
+  width: 100%;
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: background 0.3s;
+  background-color: #fff;
+  box-shadow: 0 4px 8px hsla(180, 12%, 4%, 0.3);
 }
 
-.navigation{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.navigation__logo{
-    width: 100px;
-    border-radius: 45%;
-    padding-top: .5rem;
-    padding-bottom: .5rem;
+.navigation__logo {
+  width: 100px;
+  border-radius: 45%;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
-.navigation__list{
-    display: flex;
-    flex-direction: row;
-    gap: 2.5rem;
+.navigation__list {
+  display: flex;
+  flex-direction: row;
+  gap: 2.5rem;
 }
 
 /* Home */
-.home{
-    padding-top: 4rem;
-    grid-template-columns: repeat(2, 1fr);
+.home {
+  padding-top: 4rem;
+  grid-template-columns: repeat(2, 1fr);
 }
 
-.home__title{
-    font-size: 7rem;
+.home__title {
+  font-size: 7rem;
 }
 
-.home__description{
-    font-size: 2rem;
+.home__description {
+  font-size: 2rem;
 }
 
-.home__button{
-    display: flex;
-    justify-content: center;
-    padding-top: 4rem;
+.home__button {
+  display: flex;
+  justify-content: center;
+  padding-top: 4rem;
 }
 
 /* Footer */
-.footer{
-    width: 100%;
-    margin-top: 5rem;
-    padding-block: 4rem;
-    top: 0;
-    left: 0;
-    transition: background .3s;
-    background-color: #fff;
-    box-shadow: 0px 0px 15px hsla(180, 12%, 4%, .3);
+.footer {
+  width: 100%;
+  margin-top: 5rem;
+  padding-block: 4rem;
+  top: 0;
+  left: 0;
+  transition: background 0.3s;
+  background-color: #fff;
+  box-shadow: 0px 0px 15px hsla(180, 12%, 4%, 0.3);
 }
 
-.footer__container{
-    grid-template-columns: repeat(3, 1fr);
-    align-content: space-between;
-    gap: 2rem;
+.footer__container {
+  grid-template-columns: repeat(3, 1fr);
+  align-content: space-between;
+  gap: 2rem;
 }
 
-.footer__copy{
-    font-size: 0.75rem;
-    text-align: center;
-    color: #a19fad;
-    margin-top: 3rem;
+.footer__copy {
+  font-size: 0.75rem;
+  text-align: center;
+  color: #a19fad;
+  margin-top: 3rem;
 }
 
-.footer__links{
-    flex-direction: row;
-    column-gap: 2rem;
+.footer__links {
+  flex-direction: row;
+  column-gap: 2rem;
 }
 
-.footer__social{
-    justify-content: center;
-    font-size: 1.5rem;
-    margin-right: 1.4rem;
+.footer__social {
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-right: 1.4rem;
 }

@@ -1,0 +1,23 @@
+{% load static %}
+<header class="header">
+  <nav class="navigation container grid">
+    <a href="{% url 'index' %}">
+      <img
+        src="{% static 'img/logo.jpg' %}"
+        class="navigation__logo"
+        alt="Logomarca"
+      />
+    </a>
+
+    <ul class="navigation__list">
+      {% if user.is_authenticated %} Olá, {{ user.get_username }} {% else %}
+      <li class="navigation__item button">
+        <a href="#">Login</a>
+      </li>
+      <li class="navigation__item button">
+        <a href="#">Cadastro</a>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+</header>

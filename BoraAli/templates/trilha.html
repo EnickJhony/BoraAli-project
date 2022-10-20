@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include 'partials/menu.html' %}
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<section class="trilha container">
+  <div class="trilha__content">
+    <h3 class="trilha__title">Trilha: {{ trilha.nome_trilha }}</h3>
+    <p class="card__description">Descrição: {{ trilha.descricao }}</p>
+    <p class="card__location">Localização: {{ trilha.localizacao }}</p>
+    <p class="card__duration">Duração: {{ trilha.duracao }} minutos </p>
+    <p class="card__dificult-level">Nível: {{ trilha.nivel }}</p>
+    <p class="card__curiosity">Curiosidades: {{ trilha.curiosidades }}</p>
+  </div>
+</section>
+
+{% include 'partials/footer.html' %}
+{% endblock content %}

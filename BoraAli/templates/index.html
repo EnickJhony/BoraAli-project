@@ -1,101 +1,54 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'style.css'%}" />
-    <link rel="shortcut icon" href="{% static 'img/favicon.jpg' %}" type="image/x-icon" />
-    <link
-      rel="stylesheet"
-      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
-    />
-    <title>Bora Ali</title>
-  </head>
-  <body>
-    <header class="header">
-      <nav class="navigation container grid">
-        <img src="{% static 'img/logo.jpg' %}" class="navigation__logo" alt="Logomarca" />
-
-        <ul class="navigation__list">
-          <li class="navigation__item button">
-            <a href="#">Login</a>
-          </li>
-          <li class="navigation__item button">
-            <a href="#">Cadastro</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <section class="section" id="home">
-        <div class="container home grid">
-          <div class="home__data">
-            <h1 class="home__title">Bora Ali?</h1>
-            <p class="home__description">
-              O aplicativo ideal para monitorar o percurso das suas atividades
-              ao ar livre!
-            </p>
-          </div>
-          <img src="{% static 'img/modificar.jpg' %}" alt="Banner" class="home__img" />
+{% extends 'base.html' %} {% load static %} {% block content %}
+<main>
+  {% include 'partials/menu.html' %}
+  <section class="section" id="home">
+    {% if messages %}
+      {% for m in messages %}
+        <div class="alert">
+          {{ m }}
         </div>
-        <!-- <div class="home__button">
-          <a class="button"> Iniciar Trilha </a>
-        </div> -->
-      </section>
-      <section class="card container">
-        <div class="card__content">
-          <h3 class="card__title">Trilha: nome da trilha</h3>
-          <p class="card__description">
-            Descrição: Essa trilha é parara parara parara
-          </p>
-          <p class="card__location">
-            Localização: ali onde judas lost the boots
-          </p>
-          <p class="card__duration">
-            Duração: 1h
-          </p>
-          <p class="card__dificult-level">
-            Nível: Avançado
-          </p>
-          <p class="card__curiosity">
-            Curiosidades do bagulho: foi visto o curupira
-          </p>
-        </div>
-      </section>
-    </main>
-    <footer class="footer">
-      <div class="footer__container container grid">
-        <div>
-          <h1 class="footer__title">Bora Ali?</h1>
-          <p class="footer__subtitle">Trilhas</p>
-        </div>
-        <ul class="footer__links">
-          <li>
-            <!-- <a href="#services" class="footer__link">Services</a> -->
-          </li>
-          <li>
-            <!-- <a href="#portfolio" class="footer__link">Portfolio</a> -->
-          </li>
-        </ul>
-        <div class="footer__socials">
-          <a href="https://facebook.com" target="_blank" class="footer__social">
-            <i class="uil uil-facebook-f"></i>
-          </a>
-          <a
-            href="https://instagram.com"
-            target="_blank"
-            class="footer__social"
-          >
-            <i class="uil uil-instagram"></i>
-          </a>
-          <a href="https://twitter.com" target="_blank" class="footer__social">
-            <i class="uil uil-twitter-alt"></i>
-          </a>
-        </div>
+      {% endfor %}
+    {% endif %}
+    <div class="container home grid">
+      <div class="home__data">
+        <h1 class="home__title">Bora Ali?</h1>
+        <p class="home__description">
+          O aplicativo ideal para monitorar o percurso das suas atividades ao ar
+          livre!
+        </p>
       </div>
-      <p class="footer__copy container">&#169; EnickCode. All right reserved</p>
-    </footer>
-  </body>
-</html>
+      <img
+        src="{% static 'img/modificar.jpg' %}"
+        alt="Banner"
+        class="home__img"
+      />
+    </div>
+  </section>
+  <section class="section container cards">
+    <h2 class="cards__title">Trilhas</h2>
+    <div class="card">
+      {% if trilhas %} {% for trilha in trilhas %}
+      <div class="card__content">
+        <a href="{% url 'trilha' trilha.id %}" class="card__link">
+          <i class="uil uil-compass card__logo"></i>
+          <h3 class="card__title">Nome: {{ trilha.nome_trilha }}</h3>
+        </a>
+        {% comment %}
+        <p class="card__description">
+          Descrição: Essa trilha é parara parara parara
+        </p>
+        <p class="card__location">Localização: ali onde judas lost the boots</p>
+        <p class="card__duration">Duração: 1h</p>
+        <p class="card__dificult-level">Nível: Avançado</p>
+        <p class="card__curiosity">
+          Curiosidades do bagulho: foi visto o curupira
+        </p>
+        {% endcomment %}
+      </div>
+      {% endfor %} {% else %}
+      <p>Não há trilhas cadastradas</p>
+      {% endif %}
+    </div>
+  </section>
+</main>
+{% include 'partials/footer.html' %} {% endblock %}
